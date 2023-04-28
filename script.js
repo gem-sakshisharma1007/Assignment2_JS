@@ -33,7 +33,7 @@ function chkDetails(){
   if(validateForm()){
     saveData();
   }else{
-    alert('Inalid inputs');
+    alert('Invalid inputs');
 
   }
 }
