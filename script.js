@@ -7,31 +7,43 @@ function validateForm(){
   // Check name field
   if ((!/^[a-zA-Z ]+$/.test(name)) && name==""){
     alert("Name should not be empty and should contain only letters and spaces.");
+    return false;
     
   }
   
   // Check email field
   if ((!/\S+@\S+\.\S+/.test(email))&& email=="") {
     alert("Email must be provided and address is not in a valid format.");
+    return false;
   }
   
   // Check mobile field
   if ((!/^\d{10}$/.test(phone))&& phone!="") {
     alert("Mobile No should contain only numbers and be 10 digits long.");
+    return false;
   }
   
   // Form is valid
-  saveData();
+  return true;
+  
 
 }
 
+function chkDetails(){
+  if(validateForm()){
+    saveData();
+  }else{
+    alert('Inalid inputs');
+
+  }
+}
 
   
 
 function saveData()
 {
-let name,email,psw;
-name=document.getElementById("name").value;
+  let name,email,psw;
+  name=document.getElementById("name").value;
 email=document.getElementById("email").value;
 
 phone=document.getElementById("phone").value;
@@ -46,7 +58,10 @@ employee_records.push({
 localStorage.setItem("employee_array",JSON.stringify(employee_records));
 
 showData();
+
 }
+
+
 
 function showData()
 {
